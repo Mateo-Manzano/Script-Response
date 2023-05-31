@@ -1,0 +1,103 @@
+@echo off
+hostname > tmphost
+set /p hostvar= < tmphost 
+del tmphost
+dumpit /T RAW /Q /N /O Results/%hostvar%.mem
+
+echo ******************************************
+echo Windows 7 Live Response
+echo ******************************************
+
+
+echo ********************************************  >>  Results/%hostvar%.txt
+ECHO Date and Time [start] >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+date /t >>  Results/%hostvar%.txt
+time /t >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psloglist -s -x security >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psloglist -s -x security >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psloglist -s -x application >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psloglist -s -x application >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psloglist -s -x system >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psloglist -s -x system >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo netstat -an >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+netstat -an >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo netstat -rn >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+netstat -rn >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo openports -path  >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+openports -path  >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo pslist64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+pslist64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo tasklist /svc >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+tasklist /svc >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psloggedon64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psloggedon64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo handle64 -a >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+handle64 -a >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo logonsessions64 -p >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+logonsessions64 -p >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psinfo64 -h -s -d >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psinfo64 -h -s -d >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psfile64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psfile64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo psservice64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+psservice64 >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo at >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+at >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo schtasks >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+schtasks >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo ipconfig /all >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+ipconfig /all >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo ipconfig /displaydns >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+ipconfig /displaydns >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo arp -a >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+arp -a >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+echo Date and Time [end] >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+time /t >>  Results/%hostvar%.txt
+date /t >>  Results/%hostvar%.txt
+echo ********************************************  >>  Results/%hostvar%.txt
+
+echo Calculating md5sum...
+
+md5sum Results/%hostvar%.mem >> Results/%hostvar%_mem.md5
+md5sum Results/%hostvar%.txt >> Results/%hostvar%_txt.md5
